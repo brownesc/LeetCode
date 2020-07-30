@@ -29,4 +29,47 @@ def thirdMax(nums):
         return max(nums)
     
     else:
-        first_max = 
+        first_max = None
+        second_max = None
+        third_max = None
+
+        for digit in nums:
+            if first_max is None:
+                print("first")
+                first_max = digit
+            elif second_max is None:
+                print('sec')
+                if digit<first_max:
+                    second_max = digit
+                else:
+                    second_max = first_max
+                    first_max = digit
+            elif third_max is None:
+                print("I made it")
+                if digit>first_max:
+                    third_max = second_max 
+                    second_max = first_max
+                    first_max = digit
+                
+                elif digit>second_max:
+                    third_max = second_max
+                    digit = second_max
+                
+                else:
+                    third_max = digit
+            else:
+                if digit>first_max:
+                    third_max = second_max
+                    second_max = first_max
+                    first_max = digit
+                
+                elif digit>second_max:
+                    third_max = second_max
+                    second_max = digit
+                
+                elif digit > third_max:
+                    third_max = digit
+            print((first_max,second_max,third_max))
+        return third_max
+
+print(thirdMax([2,2,3,1]))
